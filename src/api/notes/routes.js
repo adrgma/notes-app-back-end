@@ -25,7 +25,7 @@ const routes = (handler) => [
   },
   {
     // hapus note sesuai Id
-    method: 'Delete',
+    method: 'DELETE',
     path: '/notes/{id}',
     handler: handler.deleteNoteByIdHandler,
   },
