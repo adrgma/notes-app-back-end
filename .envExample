@@ -3,3 +3,18 @@ PGHOST=localhost
 PGPASSWORD=supersecretpassword
 PGDATABASE=notesapp
 PGPORT=5432
+
+# node-postgres configuration
+PGUSER=postgres
+PGHOST=localhost
+PGPASSWORD=12345
+PGDATABASE=notesapp
+PGPORT=5432
+
+#server configuration
+HOST=localhost
+PORT=5000
+
+# JWT token
+ACCESS_TOKEN_KEY = 'your token'
+REFRESH_TOKEN_KEY = 'your token'
