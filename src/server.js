@@ -1,19 +1,29 @@
+// mengimpor dotenv dan menjalankan konfigurasinya
+require('dotenv').config();
+
 const Hapi = require('@hapi/hapi');
 const Jwt = require('@hapi/jwt');
-const authentications = require('./api/authentications');
-const collaborations = require('./api/collaborations');
+
+// notes
 const notes = require('./api/notes');
-const users = require('./api/users');
-const AuthenticationsService = require('./services/postgres/AuthenticationsService');
-const CollaborationsService = require('./services/postgres/CollaborationsService');
 const NotesService = require('./services/postgres/NotesService');
-const UsersService = require('./services/postgres/UserService');
+const NotesValidator = require('./validator/notes');
+
+// users
+const users = require('./api/users');
+const UsersService = require('./services/postgres/UsersService');
+const UsersValidator = require('./validator/users');
+
+// authentications
+const authentications = require('./api/authentications');
+const AuthenticationsService = require('./services/postgres/AuthenticationsService');
 const TokenManager = require('./tokenize/TokenManager');
 const AuthenticationsValidator = require('./validator/authentications');
+
+// collaborations
+const collaborations = require('./api/collaborations');
+const CollaborationsService = require('./services/postgres/CollaborationsService');
 const CollaborationsValidator = require('./validator/collaborations');
-const NotesValidator = require('./validator/notes');
-const UsersValidator = require('./validator/users');
-require('dotenv').config();
 
 const init = async () => {
   const collaborationsService = new CollaborationsService();
@@ -38,6 +48,7 @@ const init = async () => {
     },
   ]);
 
+  // mendefinisikan strategy autentikasi jwt
   server.auth.strategy('notesapp_jwt', 'jwt', {
     keys: process.env.ACCESS_TOKEN_KEY,
     verify: {

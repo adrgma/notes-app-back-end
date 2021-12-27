@@ -1,5 +1,5 @@
 const CollaborationsHandler = require('./handler');
-const { routes } = require('./routes');
+const routes = require('./routes');
 
 module.exports = {
   name: 'collaborations',
@@ -8,7 +8,6 @@ module.exports = {
     const collaborationsHandler = new CollaborationsHandler(
       collaborationsService, notesService, validator,
     );
-
     server.route(routes(collaborationsHandler));
   },
 };

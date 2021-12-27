@@ -5,6 +5,7 @@ class CollaborationsHandler {
     this._collaborationsService = collaborationsService;
     this._notesService = notesService;
     this._validator = validator;
+
     this.postCollaborationHandler = this.postCollaborationHandler.bind(this);
     this.deleteCollaborationHandler = this.deleteCollaborationHandler.bind(this);
   }
@@ -17,6 +18,7 @@ class CollaborationsHandler {
 
       await this._notesService.verifyNoteOwner(noteId, credentialId);
       const collaborationId = await this._collaborationsService.addCollaboration(noteId, userId);
+
       const response = h.response({
         status: 'success',
         message: 'Kolaborasi berhasil ditambahkan',
@@ -35,6 +37,7 @@ class CollaborationsHandler {
         response.code(error.statusCode);
         return response;
       }
+
       // Server ERROR!
       const response = h.response({
         status: 'error',

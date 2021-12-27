@@ -1,6 +1,5 @@
 const routes = (handler) => [
   {
-    // Simpan Post
     method: 'POST',
     path: '/notes',
     handler: handler.postNoteHandler,
@@ -9,16 +8,14 @@ const routes = (handler) => [
     },
   },
   {
-    // tampilkan semua note
     method: 'GET',
     path: '/notes',
-    handler: handler.getAllNotesHandler,
+    handler: handler.getNotesHandler,
     options: {
       auth: 'notesapp_jwt',
     },
   },
   {
-    // tampilkan note sesuai Id
     method: 'GET',
     path: '/notes/{id}',
     handler: handler.getNoteByIdHandler,
@@ -27,7 +24,6 @@ const routes = (handler) => [
     },
   },
   {
-    // edit note sesuai Id
     method: 'PUT',
     path: '/notes/{id}',
     handler: handler.putNoteByIdHandler,
@@ -36,13 +32,17 @@ const routes = (handler) => [
     },
   },
   {
-    // hapus note sesuai Id
     method: 'DELETE',
     path: '/notes/{id}',
     handler: handler.deleteNoteByIdHandler,
     options: {
       auth: 'notesapp_jwt',
     },
+  },
+  {
+    method: 'GET',
+    path: '/users',
+    handler: handler.getUsersByUsernameHandler,
   },
 ];
 

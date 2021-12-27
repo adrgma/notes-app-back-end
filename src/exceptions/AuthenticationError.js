@@ -6,4 +6,5 @@ class AuthenticationError extends ClientError {
     this.name = 'AuthenticationError';
   }
 }
+
 module.exports = AuthenticationError;

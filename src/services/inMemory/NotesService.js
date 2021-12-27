@@ -19,6 +19,7 @@ class NotesService {
     this._notes.push(newNote);
 
     const isSuccess = this._notes.filter((note) => note.id === id).length > 0;
+
     if (!isSuccess) {
       throw new InvariantError('Catatan gagal ditambahkan');
     }

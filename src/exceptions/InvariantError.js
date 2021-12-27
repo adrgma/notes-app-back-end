@@ -8,6 +8,3 @@ class InvariantError extends ClientError {
 }
 
 module.exports = InvariantError;
-// module Custom error yang mengindikasikan eror karena kesalahan bisnis logic
-// pada data yang dikirimkan oleh client. Kesalahan validasi data merupakan
-// salah satu InvariantError.
